@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
+  top : 0px;
 }
 
 .wrapper-header {
@@ -74,6 +76,34 @@
   align-items: center;
   font-size: 20px;
 }
+
+.wrapper-search {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top : 30px;
+}
+
+.panel-search {
+  width : 400px;
+  height : 100px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #bbbbbb;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*****************OFFERS***************************/
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 600px) {
   .wrapper-header {
