@@ -6,6 +6,7 @@
   align-items: center;
   position: sticky;
   top : 0px;
+  background-color: white;
 }
 
 .wrapper-header {
@@ -95,7 +96,72 @@
   align-items: center;
   justify-content: center;
 }
+
+.search-input {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 8px;
+  background-color: #4183D7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
 /*****************OFFERS***************************/
+
+.wrapper-offers {
+  background-color: #FAFAFA;
+}
+
+.items-list{
+  padding-top : 50px;
+}
+
+.item {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  margin-bottom : 20px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.image-panel {
+  width : 240px;
+  height: 180px;
+  background-color:  #c5c5c5;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-item {
+  width : 240px;
+  height: 180px;
+  object-fit: scale-down;
+}
+
+.detail {
+  width : 760px;
+  height : 180px;
+  background-color: white;
+  box-shadow: 5px 5px 10px #bbbbbb;
+}
+
+.summary {
+  padding : 20px;
+  line-height: 23px;
+  font-size: 20px;
+}
+
+.price {
+  padding-top: 30px;
+  color: #FF6000;
+
+}
 
 
 

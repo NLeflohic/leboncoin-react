@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
-  Link,
   Switch,
   Route
 } from 'react-router-dom';
-import Offers from "./containers/Offers";
+import axios from "axios";
+import Home from "./containers/Home";
 import Offer from "./containers/Offer";
-import Header from "./components/Header";
 
 import "./reset.css";
 import './App.css';
 
 function App() {
+  const [offers, setOffers] = useState([]);
+
+  const fetchData = async () => {
+    const response = await axios.get("https://leboncoin-api.herokuapp.com/api/offer/with-count");
+    setOffers(response.data.offers);
+    console.log(response.data.offers);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
       <Router>
-        <Header />
         <Switch>
           <Route path="/offer">
             <Offer />
           </Route>
           <Route path="/">
-            <Offers />
+            <Home offers={offers} />
           </Route>
         </Switch>
       </Router>
