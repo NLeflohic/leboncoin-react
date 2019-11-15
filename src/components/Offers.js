@@ -5,14 +5,14 @@ const moment = require('moment');
 
 
 const Offers = (props) => {
-
   return (
     <div className="wrapper-offers">
       <div className="items-list">
         {
           props.offers.map((offer) => {
+            const id = offer._id;
             return (
-              <Link to="/offer" key={offer._id} prop={offer._id} onClick={() => {
+              <Link to={"/offer/" + id} key={offer._id} prop={offer._id} onClick={() => {
                 props.currentOfferFunc(offer);
               }}>
                 <>

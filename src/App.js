@@ -5,8 +5,10 @@ import {
   Route
 } from 'react-router-dom';
 import axios from "axios";
+import Header from "./components/Header";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
+import Footer from "./components/Footer";
 
 import "./reset.css";
 import './App.css';
@@ -34,8 +36,9 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Header />
         <Switch>
-          <Route path="/offer">
+          <Route path="/offer/:id">
             <Offer currentOffer={currentOffer} />
           </Route>
           <Route path="/">
@@ -43,6 +46,7 @@ function App() {
               currentPage={currentPage} currentPageFunc={setCurrentPage} currentOfferFunc={setCurrentOffer} />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </div>
   );
