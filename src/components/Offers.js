@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const moment = require('moment');
 
 
 const Offers = (props) => {
+  const fetchData = async (url) => {
+    const response = await axios.get(url);
+    props.countFunc(response.data.count);
+    props.offersFunc(response.data.offers);
+  }
+
+  const pageToFetch = props.currentPage * props.limit;
+  const url = "https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=" + pageToFetch + "&limit=" + props.limit;
+  console.log(url);
+  useEffect(() => {
+
+    fetchData(url);
+  }, [props.currentPage]);
+
+  console.log(props);
   return (
     <div className="wrapper-offers">
       <div className="items-list">

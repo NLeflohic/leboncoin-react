@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
-import axios from "axios";
 import Header from "./components/Header";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
@@ -14,24 +13,7 @@ import "./reset.css";
 import './App.css';
 
 function App() {
-  const limit = 3;
-
-  const [offers, setOffers] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [count, setCount] = useState();
   const [currentOffer, setCurrentOffer] = useState({});
-
-  const fetchData = async (url) => {
-    const response = await axios.get(url);
-    setCount(response.data.count);
-    setOffers(response.data.offers);
-  }
-
-  useEffect(() => {
-    const pageToFetch = currentPage * limit;
-    const url = "https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=" + pageToFetch + "&limit=" + limit;
-    fetchData(url);
-  }, [currentPage]);
 
   return (
     <div className="App">
@@ -42,8 +24,7 @@ function App() {
             <Offer currentOffer={currentOffer} />
           </Route>
           <Route path="/">
-            <Home offers={offers} limit={limit} count={count}
-              currentPage={currentPage} currentPageFunc={setCurrentPage} currentOfferFunc={setCurrentOffer} />
+            <Home currentOfferFunc={setCurrentOffer} />
           </Route>
         </Switch>
         <Footer />
