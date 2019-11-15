@@ -30,11 +30,13 @@ const Header = () => {
         </div>
       </div>
       <div className="wrapper-search">
-        <div className="panel-search">
-          <form onSubmit={handleSubmit} className="form">
-            <input className="search-input" type="text" placeholder="Que recherchez vous ?" />
-            <input className="search-button" type="submit" value="Rechercher" />
-          </form>
+        <div className="elipse">
+          <div className="panel-search">
+            <form onSubmit={handleSubmit} className="form">
+              <input className="search-input" type="text" placeholder="Que recherchez vous ?" />
+              <input className="search-button" type="submit" value="Rechercher" />
+            </form>
+          </div>
         </div>
       </div>
     </>

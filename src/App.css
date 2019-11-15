@@ -95,6 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
 }
 
 .search-input {
@@ -142,6 +143,7 @@
   width : 240px;
   height: 180px;
   object-fit: scale-down;
+  cursor: pointer;
 }
 
 .detail {
@@ -157,16 +159,43 @@
   font-size: 20px;
 }
 
+.title, .date {
+  color: black;
+}
+
 .price {
   padding-top: 30px;
   color: #FF6000;
+}
 
+.date {
+  padding-top: 60px;
+  font-size: 18px;
 }
 
 
 
+/**************FOOTER***********************/
+footer {
+  height : 80px;
+  background-color: #464749;
+  color: #FFFFFF;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
 
+a:link {
+  margin-left : 2px;
+  color: #FFFFFF;
+}
 
+a:visited {
+  margin-left : 2px;
+  color: #FFFFFF;
+}
 
 
 
@@ -180,4 +209,20 @@
     flex-direction: column;
     padding-bottom: 10px;
   }
+}
+
+/************NAVIGATION*****************/
+.navigation-bar {
+  height: 27px;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation-page {
+  font-size: 19px;
+  padding-right : 10px;
+  color: #2882DE;
+  cursor: pointer;
 }
