@@ -19,11 +19,18 @@ const Navigation = (props) => {
       }>{"<"}</span>
       {
         arr.map((x, idx) => {
-          return (<span key={idx} className="navigation-page" onClick={
-            () => {
-              props.currentPageFunc(x - 1);
-            }
-          }>{x}</span>);
+          const color = props.currentPage !== (x - 1) ? "" : "square-orange";
+          console.log(props.currentPage + " VS " + x)
+          return (
+            <div className={color}>
+              <span key={idx} className={"navigation-page " + color}
+                onClick={
+                  () => {
+                    props.currentPageFunc(x - 1);
+                    console.log(props.currentPage);
+                  }
+                }>{x}</span>
+            </div>);
         })
       }
       <span className="navigation-page" onClick={() => {
