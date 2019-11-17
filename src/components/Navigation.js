@@ -20,9 +20,8 @@ const Navigation = (props) => {
       {
         arr.map((x, idx) => {
           const color = props.currentPage !== (x - 1) ? "" : "square-orange";
-          console.log(props.currentPage + " VS " + x)
           return (
-            <div className={color}>
+            <div key={idx} className={color}>
               <span key={idx} className={"navigation-page " + color}
                 onClick={
                   () => {

@@ -8,6 +8,7 @@
   position: sticky;
   top : 0px;
   background-color: white;
+  z-index: 999;
 }
 
 .wrapper-header {
@@ -85,6 +86,7 @@
   align-items: center;
   justify-content: center;
   margin-top : 30px;
+  position: relative;
 }
 
 .panel-search {
@@ -97,6 +99,7 @@
   align-items: center;
   justify-content: center;
   background-color: white;
+  position: absolute;
 }
 
 .search-input {
@@ -110,6 +113,18 @@
   color: white;
   border: none;
   border-radius: 5px;
+}
+
+.elipse {
+  position: absolute;
+  background-color: #FF6000;
+  width: 2000px;
+  height: 200px;
+  background:#FF6000;
+  border-radius: 800px / 50px;
+  z-index: 0;
+  margin-top: -150px;
+
 }
 /*****************OFFERS***************************/
 

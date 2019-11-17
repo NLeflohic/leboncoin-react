@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -14,13 +14,11 @@ const Offers = (props) => {
 
   const pageToFetch = props.currentPage * props.limit;
   const url = "https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=" + pageToFetch + "&limit=" + props.limit;
-  console.log(url);
   useEffect(() => {
 
     fetchData(url);
   }, [props.currentPage]);
 
-  console.log(props);
   return (
     <div className="wrapper-offers">
       <div className="items-list">
