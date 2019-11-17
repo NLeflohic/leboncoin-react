@@ -199,20 +199,6 @@ a:visited {
   color: #FFFFFF;
 }
 
-
-
-
-@media only screen and (max-width: 600px) {
-  .wrapper-header {
-    height: 100%;
-    flex-direction: column;
-  }
-  .wrapper-menu {
-    flex-direction: column;
-    padding-bottom: 10px;
-  }
-}
-
 /************NAVIGATION*****************/
 .navigation-bar {
   height: 27px;
@@ -374,3 +360,132 @@ a:visited {
   color: white;
 }
 
+@media only screen and (max-width: 1024px) {
+  .header {
+    height: 100px;
+  }
+  .wrapper-header {
+    flex-direction: column;
+    height : 200px;
+  }
+
+  .wrapper-menu {
+    width : 100vw;
+    justify-content: center;
+    padding-top: 50px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+align-items: center;
+  }
+} 
+
+@media only screen and (max-width: 400px) {
+  .header {
+    height: 200px;
+    display: flex;
+    padding-botom: 20px;
+  }
+  .wrapper-header {
+    height: 200px;
+    align-content: flex-start;
+    flex-direction: column;
+  }
+  .wrapper-menu {
+    flex-direction: column;
+    padding-bottom: 10px;
+    padding-top: 0px;
+  }
+
+  .wrapper-search {
+    margin-top:0px;
+    width : 100vw;
+  }
+
+  .elipse {
+    width : 100vw;
+  }
+
+  .home {
+    margin-top: 20px;
+  }
+  .panel-search {
+    width : 100vw;
+  }
+
+  .summary .title {
+    font-size: 20px;
+  }
+  .summary .price {
+    padding-top: 5px;
+  }
+  .summary .date {
+    padding-top : 20px;
+  }
+  .image-panel {
+    width: 480px;
+  }
+
+  .navigation-page {
+    font-size: 10px;
+    padding : 5px 8px;
+  }
+
+  footer {
+    font-size : 19px;
+    flex-direction: column;
+  }
+
+/******************************/
+.wrapper-offer {
+  flex-direction: column;
+}
+
+.wrapper-offer-detail {
+  margin: 0px;
+  width : 100vw;
+}
+.wrapper-offer-detail .image-panel {
+  width: 100vw;
+}
+.wrapper-offer-detail .item-detail {
+  width: 100vw;
+}
+.wrapper-offer-detail .description {
+  padding : 20px;
+}
+
+.wrapper-offer-detail .detail {
+  width: 100vw;
+}
+
+.description {
+  width : 100vw;
+}
+
+.vendor {
+  justify-content: center;
+  padding-bottom: 20px;
+}
+.vendor-detail {
+  height: 140px;
+} 
+.vendor-title {
+  height : 70px;
+}
+.buy-me {
+  height : 70px;
+}
+
+.wrapper-menu {
+  margin-top: 15px;
+}
+.wrapper-menu > * {
+  padding-bottom: 20px;
+}
+.wrapper-menu .send-offer {
+  padding-bottom: 0px; 
+}
+}
