@@ -21,10 +21,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header connected={connected} />
+        <Header connected={connected} setConnected={setConnected} />
         <Switch>
           <Route path="/signin" >
-            <Signin />
+            <Signin setConnected={setConnected} />
           </Route>
           <Route path="/offer/:id">
             <Offer currentOffer={currentOffer} />

@@ -1,6 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 
-const Signin = () => {
+const Signin = (props) => {
+  const [inputMail, setInputMail] = useState("");
+  const [inputPseudo, setInputPseudo] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+  const [inputConfirmPassword, setInputConfirmPassword] = useState("");
+  const [cgvOk, setCgvOk] = useState("false");
+  const [token, setToken] = useState("");
+  const history = useHistory();
+
+  const onSubmit = (event) => {
+    if (inputPassword !== inputConfirmPassword) {
+      alert("Les mots de passe ne correspondent pas");
+    } else if (cgvOk === false) {
+      alert("CGV non acceptées");
+    } else
+      if ((inputMail !== "") && (inputPseudo !== "") && (inputPassword !== "")) {
+
+        axios.post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
+          email: inputMail,
+          username: inputPseudo,
+          password: inputPassword
+        }).then((response) => {
+          setToken(response.data.token);
+          Cookies.set("token", response.data.token);
+          props.setConnected(true);
+          history.push("/");
+        })
+          .catch((error) => {
+            alert(error);
+          })
+          ;
+      }
+    event.preventDefault();
+  }
+
+
   return (
     <section className="page">
       <div className="signin-form">
@@ -30,27 +68,38 @@ const Signin = () => {
         </div>
         <div className="account-creation">
           <h1>Creér un compte</h1>
-          <form>
+          <form onSubmit={onSubmit}>
             <h2>Pseudo *</h2>
-            <input type="text" placeholder="Pseudo" />
+            <input type="text" placeholder="Pseudo" value={inputPseudo} onChange={(event) => {
+              setInputPseudo(event.target.value);
+            }} />
             <h2>Adresse email</h2>
-            <input type="text" placeholder="email" />
+            <input type="text" placeholder="email" value={inputMail} onChange={(event) => {
+              setInputMail(event.target.value);
+            }} />
             <div className="password">
               <div className="passsword-input">
                 <h2>Mot de passe</h2>
-                <input className="inpt" type="password" />
+                <input className="inpt" type="password" value={inputPassword} onChange={(event) => {
+                  setInputPassword(event.target.value);
+                }} />
               </div>
               <div className="confirmation-input">
                 <h2>Confirmer le mot de passe</h2>
-                <input className="inpt" type="password" />
+                <input className="inpt" type="password" value={inputConfirmPassword} onChange={(event) => {
+                  setInputConfirmPassword(event.target.value);
+                }} />
               </div>
             </div>
             <div className="checkbox">
-              <input type="checkbox" />
+              <input type="checkbox" onChange={(event) => {
+                console.log(event.target.value);
+                setCgvOk(event.target.value);
+              }
+              } />
               <p>j'accepte les conditions de Vente et les conditions générales d'utilisation</p>
             </div>
             <button>Créer mon compte personnel</button>
-
           </form>
         </div>
       </div>

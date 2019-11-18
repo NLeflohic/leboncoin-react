@@ -7,14 +7,20 @@ const Header = (props) => {
   const [showLogin, setShowLogin] = useState(false);
 
   const onConnectionClick = () => {
-    if (showLogin === false) {
-      setShowLogin(true);
+    if (props.connected === true) {
+      props.setConnected(false);
+    } else {
+      if (showLogin === false) {
+        setShowLogin(true);
+      } else {
+
+      }
     }
   }
 
   return (
     <>
-      {showLogin === true && <Login showLogin={showLogin} setShowLogin={setShowLogin} />}
+      {showLogin === true && <Login showLogin={showLogin} setShowLogin={setShowLogin} setConnected={props.setConnected} connected={props.connected} />}
       <div className="header">
         <div className="wrapper-header">
           <div className="wrapper-menu">
@@ -29,7 +35,7 @@ const Header = (props) => {
           <div className="wrapper-user">
             <div className="user" onClick={onConnectionClick}>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <span>Se connecter</span>
+              <div>{props.connected === false ? <span>Se connecter</span> : <span>Connecté</span>}</div>
             </div>
           </div>
         </div>
