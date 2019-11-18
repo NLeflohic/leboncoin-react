@@ -7,19 +7,25 @@ import {
 import Header from "./components/Header";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
+import Signin from "./containers/Signin";
 import Footer from "./components/Footer";
+
 
 import "./reset.css";
 import './App.css';
 
 function App() {
   const [currentOffer, setCurrentOffer] = useState({});
+  const [connected, setConnected] = useState(false);
 
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header connected={connected} />
         <Switch>
+          <Route path="/signin" >
+            <Signin />
+          </Route>
           <Route path="/offer/:id">
             <Offer currentOffer={currentOffer} />
           </Route>

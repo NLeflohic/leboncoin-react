@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../images/leboncoin.svg";
+import Login from "./Login";
 
-const Header = () => {
+const Header = (props) => {
+  const [showLogin, setShowLogin] = useState(false);
+
+  const onConnectionClick = () => {
+    if (showLogin === false) {
+      setShowLogin(true);
+    }
+  }
+
   return (
     <>
+      {showLogin === true && <Login showLogin={showLogin} setShowLogin={setShowLogin} />}
       <div className="header">
         <div className="wrapper-header">
           <div className="wrapper-menu">
@@ -17,7 +27,7 @@ const Header = () => {
             </div>
           </div>
           <div className="wrapper-user">
-            <div className="user">
+            <div className="user" onClick={onConnectionClick}>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
               <span>Se connecter</span>
             </div>

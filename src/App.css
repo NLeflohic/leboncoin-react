@@ -78,6 +78,7 @@
   flex-direction : column;
   align-items: center;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .wrapper-search {
@@ -124,8 +125,7 @@
   background:#FF6000;
   border-radius: 800px / 50px;
   z-index: 0;
-  margin-top: -150px;
-
+  margin-top: -50px;
 }
 /*****************OFFERS***************************/
 
@@ -376,6 +376,246 @@ a:visited {
   background-color: #FF6000;
   color: white;
 }
+/***********LOGIN********************/
+.login {
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+  position: absolute;
+  background-color: rgba(87, 86, 86, 0.95);
+}
+
+.connexion {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputs {
+  width : 500px;
+  height: 4500px;
+}
+
+.inputs h1 {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgba(87, 86, 86, 0.95)
+}
+
+.inputs h2 {
+  font-size : 18px;
+  color: rgba(87, 86, 86, 0.95)
+}
+
+.inputs form > h1 {
+  align-self: center;
+  border-bottom : 3px solid #FF6000;
+  padding: 0px 150px 20px;
+}
+
+.inputs form {
+  margin-top : 20px;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+.inputs form * {
+  padding: 15px;
+}
+.inputs form button {
+  margin : 15px 0px;
+}
+
+.inputs form h2 {
+  font-weight: 700;
+}
+.inputs form input {
+  border-radius: 5px;
+  border: 1px solid rgba(87, 86, 86, 0.95);
+}
+
+.signup {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+.signup * {
+  padding: 15px;
+}
+
+.signup h1 {
+  align-self: center;
+}
+
+.connexion {
+  height: 500px;
+  width: 800px;
+  margin-top:100px;
+  margin-left: 500px;
+  background-color: white;
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.inputs button {
+  border-radius : 5px;
+  border: none;
+}
+
+.connexion button {
+  font-size: 18px;
+}
+
+form button {
+  color: white;
+  background-color: #4183D7;
+}
+
+.signup button {
+  color: #4183D7;
+  background-color: white;
+  border: 2px solid #4183D7;
+}
+.separator {
+  margin-top: 10px;
+  margin-left: -100px;
+  width: 700px;
+  border: 0.5px solid rgba(87, 86, 86, 0.95);
+}
+/**********SIGNIN***************************/
+.page {
+  position:relative;
+  background-color: #FAFAFA;
+  height: 800px;
+}
+.signin-form {
+  position: absolute;
+  background-color:white;
+  height : 600px;
+  width: 1200px;
+  display:-webkit-flex;
+  display: flex;
+  flex-direction: row;
+  justify-content : center;
+  margin: 30px 250px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px #bbbbbb;
+}
+.signin-form h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.why {
+  width : 700px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.why > h1 {
+  padding-bottom : 30px;
+  font-size: 24px;
+}
+.account-creation {
+  justify-content: center;
+  padding: 20px;
+  width: 400px;
+}
+
+.password-input {
+  display: -webkit-flex;
+  display: flex;
+  margin-right : 30px;
+}
+
+.confirmation-input {
+  margin-left : 10px;
+}
+.inpt {
+  width : 200px;
+}
+
+.account-creation > h1 {
+  align-self: center;
+  padding-bottom : 30px;
+  font-size: 24px;
+  border-bottom: 3px solid #FF6000;
+}
+
+.account-creation > form {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  margin-top : 30px;
+}
+
+.account-creation > form > input {
+  flex: 1;
+}
+.account-creation .password {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row; 
+
+}
+
+.account-creation  h2 {
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom : 10px;
+  padding-top : 10px;
+}
+
+form > input {
+  width : 410px;
+}
+
+.account-creation input {
+  padding : 14px;
+  border-radius : 5px;
+  border: 1px solid rgba(87, 86, 86, 0.95);
+}
+
+.checkbox {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+.checkbox p {
+  padding-left : 20px;
+}
+
+form > button {
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.answer  {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction : row;
+  padding-bottom: 60px;
+}
+
+.answer h1 {
+  padding-bottom : 20px;
+}
+
+.answer p {
+  padding-right : 30px;
+}
+
+.answer > div {
+  margin-left : 30px;
+}
+
 
 @media only screen and (max-width: 1024px) {
   .header {
