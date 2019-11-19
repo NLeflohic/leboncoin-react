@@ -10,15 +10,19 @@ const Signup = (props) => {
   const [inputConfirmPassword, setInputConfirmPassword] = useState("");
   const [cgvOk, setCgvOk] = useState("false");
   const [token, setToken] = useState("");
+  const [signupError, setSignupError] = useState("");
   const history = useHistory();
 
   const onSubmit = (event) => {
+    event.preventDefault();
+    console.log(cgvOk);
     if (inputPassword !== inputConfirmPassword) {
-      alert("Les mots de passe ne correspondent pas");
-    } else if (cgvOk === false) {
-      alert("CGV non acceptées");
+      setSignupError("Les mots de passe ne correspondent pas");
+    }
+    if (cgvOk !== false) {
+      setSignupError("Les CGV n'ont pas été acceptés");
     } else
-      if ((inputMail !== "") && (inputPseudo !== "") && (inputPassword !== "")) {
+      if ((inputMail !== "") && (inputPseudo !== "") && (inputPassword !== "") && (cgvOk === true)) {
 
         axios.post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
           email: inputMail,
@@ -35,7 +39,6 @@ const Signup = (props) => {
           })
           ;
       }
-    event.preventDefault();
   }
 
 
@@ -74,7 +77,7 @@ const Signup = (props) => {
               setInputPseudo(event.target.value);
             }} />
             <h2>Adresse email</h2>
-            <input type="text" placeholder="email" value={inputMail} onChange={(event) => {
+            <input type="email" placeholder="email" value={inputMail} onChange={(event) => {
               setInputMail(event.target.value);
             }} />
             <div className="password">
@@ -100,6 +103,9 @@ const Signup = (props) => {
               <p>J'accepte les conditions de Vente et les conditions générales d'utilisation</p>
             </div>
             <button className="create-button">Créer mon compte personnel</button>
+            <div className="signup-error">
+              {signupError}
+            </div>
           </form>
         </div>
       </div>
