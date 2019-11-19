@@ -19,15 +19,14 @@ const Login = (props) => {
       })
       .then(response => {
         if (response.data && response.data.token) {
-          if (response.data.token === cookie) {
-            props.setConnected(true);
-          }
-          props.setShowLogin(false);
+          props.setConnected(true);
         }
+        props.setShowLogin(false);
       })
       .catch(err => {
         console.log(err);
         props.setShowLogin(false);
+        Cookies.remove("token");
       });
     event.preventDefault();
   };
@@ -37,8 +36,13 @@ const Login = (props) => {
     props.setShowLogin(false);
   }
 
+  const onClose = () => {
+    props.setShowLogin(false);
+  }
+
   return (
     <section className="login">
+      <div className="close-modal" onClick={onClose}>X</div>
       <div className="connexion">
         <div className="inputs">
           <form onSubmit={onSubmit}>

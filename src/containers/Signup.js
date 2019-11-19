@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const Signin = (props) => {
+const Signup = (props) => {
   const [inputMail, setInputMail] = useState("");
   const [inputPseudo, setInputPseudo] = useState("");
   const [inputPassword, setInputPassword] = useState("");
@@ -92,14 +92,14 @@ const Signin = (props) => {
               </div>
             </div>
             <div className="checkbox">
-              <input type="checkbox" onChange={(event) => {
+              <input className="box-checkbox" type="checkbox" onChange={(event) => {
                 console.log(event.target.value);
                 setCgvOk(event.target.value);
               }
               } />
-              <p>j'accepte les conditions de Vente et les conditions générales d'utilisation</p>
+              <p>J'accepte les conditions de Vente et les conditions générales d'utilisation</p>
             </div>
-            <button>Créer mon compte personnel</button>
+            <button className="create-button">Créer mon compte personnel</button>
           </form>
         </div>
       </div>
@@ -108,4 +108,4 @@ const Signin = (props) => {
   );
 }
 
-export default Signin;
+export default Signup;

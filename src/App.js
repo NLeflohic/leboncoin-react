@@ -7,7 +7,7 @@ import {
 import Header from "./components/Header";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
-import Signin from "./containers/Signin";
+import Signup from "./containers/Signup";
 import Footer from "./components/Footer";
 
 
@@ -24,7 +24,7 @@ function App() {
         <Header connected={connected} setConnected={setConnected} />
         <Switch>
           <Route path="/signin" >
-            <Signin setConnected={setConnected} />
+            <Signup setConnected={setConnected} />
           </Route>
           <Route path="/offer/:id">
             <Offer currentOffer={currentOffer} />
