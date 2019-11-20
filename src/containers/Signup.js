@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -10,17 +10,17 @@ const Signup = (props) => {
   const [inputConfirmPassword, setInputConfirmPassword] = useState("");
   const [cgvOk, setCgvOk] = useState("false");
   const [token, setToken] = useState("");
-  const [signupError, setSignupError] = useState("");
+  const [signupError, setSignupError] = useState([]);
   const history = useHistory();
+  const msgErreur = [];
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(cgvOk);
     if (inputPassword !== inputConfirmPassword) {
-      setSignupError("Les mots de passe ne correspondent pas");
-    }
+      msgErreur.push("Les mots de passe ne correspondent pas");
+    };
     if (cgvOk !== false) {
-      setSignupError("Les CGV n'ont pas été acceptés");
+      msgErreur.push("Les CGV n'ont pas été acceptés");
     } else
       if ((inputMail !== "") && (inputPseudo !== "") && (inputPassword !== "") && (cgvOk === true)) {
 
@@ -31,6 +31,7 @@ const Signup = (props) => {
         }).then((response) => {
           setToken(response.data.token);
           Cookies.set("token", response.data.token);
+          props.setToken(response.data.token);
           props.setConnected(true);
           history.push("/");
         })
@@ -39,8 +40,10 @@ const Signup = (props) => {
           })
           ;
       }
+    if (msgErreur.length > 0) {
+      setSignupError(msgErreur);
+    }
   }
-
 
   return (
     <section className="page">
@@ -95,7 +98,7 @@ const Signup = (props) => {
               </div>
             </div>
             <div className="checkbox">
-              <input className="box-checkbox" type="checkbox" onChange={(event) => {
+              <input className="box-checkbox" type="checkbox" value={cgvOk} onChange={(event) => {
                 console.log(event.target.value);
                 setCgvOk(event.target.value);
               }
@@ -104,7 +107,10 @@ const Signup = (props) => {
             </div>
             <button className="create-button">Créer mon compte personnel</button>
             <div className="signup-error">
-              {signupError}
+              {signupError.map((error, idx) => {
+                return <p key={idx}>{error}</p>
+              })
+              }
             </div>
           </form>
         </div>

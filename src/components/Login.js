@@ -20,6 +20,8 @@ const Login = (props) => {
       .then(response => {
         if (response.data && response.data.token) {
           props.setConnected(true);
+          props.setToken(response.data.token);
+          Cookies.set("token", response.data.token);
         }
         props.setShowLogin(false);
       })
@@ -38,6 +40,7 @@ const Login = (props) => {
 
   const onClose = () => {
     props.setShowLogin(false);
+    history.goBack();
   }
 
   return (

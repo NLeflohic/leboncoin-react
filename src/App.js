@@ -8,7 +8,9 @@ import Header from "./components/Header";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Signup from "./containers/Signup";
+import Announce from "./containers/Publish";
 import Footer from "./components/Footer";
+
 
 
 import "./reset.css";
@@ -17,14 +19,18 @@ import './App.css';
 function App() {
   const [currentOffer, setCurrentOffer] = useState({});
   const [connected, setConnected] = useState(false);
+  const [token, setToken] = useState("");
 
   return (
     <div className="App">
       <Router>
-        <Header connected={connected} setConnected={setConnected} />
+        <Header connected={connected} setConnected={setConnected} token={token} setToken={setToken} />
         <Switch>
+          <Route path="/publish">
+            <Announce token={token} />
+          </Route>
           <Route path="/signin" >
-            <Signup setConnected={setConnected} />
+            <Signup setConnected={setConnected} setToken={setToken} />
           </Route>
           <Route path="/offer/:id">
             <Offer currentOffer={currentOffer} />
