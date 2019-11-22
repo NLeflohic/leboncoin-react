@@ -46,7 +46,9 @@ const Search = (props) => {
           <button onClick={onFiltersClick}>Filtres</button>
         </div>
       </div >
-      {!isFiltersDisplayed && <Filters filters={filters} setFilters={setFilters} setIsFilterDisplayed={setIsFiltersDisplayed} />}
+      {/* {!isFiltersDisplayed &&  */}
+      <Filters show={isFiltersDisplayed} filters={filters} setFilters={setFilters} setIsFilterDisplayed={setIsFiltersDisplayed} />
+      {/* } */}
     </div>
   )
 }

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 
 const Filters = (props) => {
   let LocalFilters = { ...props.filters };
@@ -10,6 +9,11 @@ const Filters = (props) => {
   const [buttonLabel, setButtonLabel] = useState("Tri")
   const [menuDisplay, setMenuDisplay] = useState(false);
   const [limit, setLimit] = useState(3);
+  const [isShow, setIsShow] = useState(false);
+
+  useEffect(() => {
+    setIsShow(props.show);
+  }, [props.show]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -83,8 +87,9 @@ const Filters = (props) => {
     props.setFilters(LocalFilters);
   }
 
+
   return (
-    <div className="filters">
+    <div className={(isShow) ? "fiters show" : "filters"}>
       <form onSubmit={onSubmit}>
         <div className="options">
           <div className="filter-price">

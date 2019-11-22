@@ -7,16 +7,17 @@ const Navigation = (props) => {
   for (let i = 0; i < nbPage; i++) {
     arr.push(i + 1);
   }
-
   return (
     <div className="navigation-bar">
-      <span className="navigation-page" onClick={() => {
-        const page = props.currentPage - 1;
-        if (page > 1) {
-          props.currentPageFunc(props.currentPage - 1);
+      {props.currentPage > 1 &&
+        <span className="navigation-page" onClick={() => {
+          const page = props.currentPage - 1;
+          if (page > 1) {
+            props.currentPageFunc(props.currentPage - 1);
+          }
         }
+        }>{"<"}</span>
       }
-      }>{"<"}</span>
       {
         arr.map((x, idx) => {
           const color = props.currentPage !== (x - 1) ? "" : "square-orange";
@@ -31,12 +32,14 @@ const Navigation = (props) => {
             </div>);
         })
       }
-      <span className="navigation-page" onClick={() => {
-        const page = props.currentPage + 1;
-        if (page < nbPage) {
-          props.currentPageFunc(props.currentPage + 1);
-        }
-      }}>{">"}</span>
+      {props.currentPage + 1 < nbPage &&
+        <span className="navigation-page" onClick={() => {
+          const page = props.currentPage + 1;
+          if (page < nbPage) {
+            props.currentPageFunc(props.currentPage + 1);
+          }
+        }}>{">"}</span>
+      }
     </div >
   )
 }

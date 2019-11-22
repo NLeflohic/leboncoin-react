@@ -9,17 +9,17 @@ const moment = require("moment");
 const Offer = () => {
   const [offerDetail, setOfferDetail] = useState({});
 
-  const fetchData = async (url) => {
-    const response = await axios.get(url);
-    const data = response.data;
-    setOfferDetail({ ...data });
-  }
-
   const { id } = useParams();
   useEffect(() => {
-    const url = "http://localhost:4000/offer/" + id;
-    fetchData(url);
-  }, []);
+    const fetchData = async () => {
+      console.log("fetchdata");
+      const url = "http://localhost:4000/offer/" + id;
+      const response = await axios.get(url);
+      const data = response.data;
+      setOfferDetail({ ...data });
+    }
+    fetchData();
+  });
 
   if (offerDetail.title !== undefined) {
     return (

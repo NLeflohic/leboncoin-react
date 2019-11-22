@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../images/leboncoin.svg";
 import Login from "./Login";
-import Publish from "../containers/Publish";
 import Cookie from "js-cookie";
 
 const Header = (props) => {

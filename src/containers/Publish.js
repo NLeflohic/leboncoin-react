@@ -50,6 +50,7 @@ function Previews(props) {
         <img
           src={file.preview}
           style={img}
+          alt={file.name}
         />
       </div>
     </div>
@@ -79,7 +80,6 @@ const Announce = (props) => {
   const [title, setTitle] = useState("");
   const [textAnnounce, setTextAnnounce] = useState("");
   const [price, setPrice] = useState(0);
-  const [picture, setPicture] = useState("");
   const [files, setFiles] = useState([]);
 
   const onSubmit = async (event) => {
@@ -99,7 +99,8 @@ const Announce = (props) => {
     formData.append("token", props.token);
 
     try {
-      const response = await axios.post("http://localhost:4000/offer/publish",
+      // const response = 
+      await axios.post("http://localhost:4000/offer/publish",
         formData,
         {
           headers: {
@@ -131,11 +132,8 @@ const Announce = (props) => {
             </label>
             <h2>Price</h2>
             <input className="number" type="text" pattern="[0-9]*" value={price} onChange={(event) => {
-              {
-                event.target.validity.valid &&
-                  setPrice(event.target.value)
-
-              }
+              event.target.validity.valid &&
+                setPrice(event.target.value)
             }} />€
             <h2>Photos</h2>
             <Previews files={files} setFiles={setFiles} />
