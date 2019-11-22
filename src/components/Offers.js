@@ -9,13 +9,12 @@ const Offers = (props) => {
   const fetchData = async (url) => {
     const response = await axios.get(url);
     props.countFunc(response.data.count);
-    props.offersFunc(response.data.offers);
+    props.offersFunc(response.data.result);
   }
 
-  const pageToFetch = props.currentPage * props.limit;
-  const url = "https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=" + pageToFetch + "&limit=" + props.limit;
   useEffect(() => {
-
+    const pageToFetch = props.currentPage * props.limit;
+    const url = "http://localhost:4000/offers"; //with-count?skip=" + pageToFetch + "&limit=" + props.limit;
     fetchData(url);
   }, [props.currentPage]);
 

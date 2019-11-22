@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 const Filters = (props) => {
   let LocalFilters = { ...props.filters };
-  console.log(LocalFilters);
 
   const [priceMin, setPriceMin] = useState(LocalFilters.priceMin);
   const [priceMax, setPriceMax] = useState(LocalFilters.priceMax);
@@ -36,7 +35,6 @@ const Filters = (props) => {
       res = controlValue(res);
       res = res + "priceMax=" + priceMax
     }
-    console.log("sort : " + sort);
     switch (sort) {
       case 1: {
         res = controlValue(res);
@@ -58,7 +56,10 @@ const Filters = (props) => {
         res = res + "sort=date-desc";
         break;
       }
-    }
+      default:
+        break;
+    };
+
     if (limit > 0) {
       res = controlValue(res);
       res = res + "limit=" + limit;
@@ -79,7 +80,6 @@ const Filters = (props) => {
     } else {
       LocalFilters.limit = 3;
     }
-    console.log(LocalFilters);
     props.setFilters(LocalFilters);
   }
 
@@ -111,34 +111,41 @@ const Filters = (props) => {
             <button className="dropbtn" onClick={onBtnClick}>{buttonLabel}</button>
             {menuDisplay === true &&
               <div className="dropdown-content">
-                <a onClick={
+                {/* <a onClick={
                   () => {
                     setSort(1);
                     setButtonLabel("prix croissant");
                     setMenuDisplay(false);
                   }
-                } href="#">Prix croissant</a>
-                <a onClick={
+                } href="#">Prix croissant</a> */}
+                <span onClick={
+                  () => {
+                    setSort(1);
+                    setButtonLabel("prix croissant");
+                    setMenuDisplay(false);
+                  }
+                }>Prix croissant</span>
+                <span onClick={
                   () => {
                     setSort(2);
                     setButtonLabel("prix décroissant");
                     setMenuDisplay(false);
                   }
-                } href="#">Prix décroissant</a>
-                <a onClick={
+                }>Prix décroissant</span>
+                <span onClick={
                   () => {
                     setSort(3);
                     setButtonLabel("Date croissante");
                     setMenuDisplay(false);
                   }
-                } href="#">Date croissante</a>
-                <a onClick={
+                }>Date croissante</span>
+                <span onClick={
                   () => {
                     setSort(4);
                     setButtonLabel("Date décroissante");
                     setMenuDisplay(false);
                   }
-                } href="#">Date décroissante</a>
+                }>Date décroissante</span>
               </div>
             }
             <button className="validate" onClick={onValidateClick}>Valider</button>

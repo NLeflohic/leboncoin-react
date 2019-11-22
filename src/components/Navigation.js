@@ -26,7 +26,6 @@ const Navigation = (props) => {
                 onClick={
                   () => {
                     props.currentPageFunc(x - 1);
-                    console.log(props.currentPage);
                   }
                 }>{x}</span>
             </div>);

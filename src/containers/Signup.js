@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -9,7 +9,6 @@ const Signup = (props) => {
   const [inputPassword, setInputPassword] = useState("");
   const [inputConfirmPassword, setInputConfirmPassword] = useState("");
   const [cgvOk, setCgvOk] = useState("false");
-  const [token, setToken] = useState("");
   const [signupError, setSignupError] = useState([]);
   const history = useHistory();
   const msgErreur = [];
@@ -19,24 +18,24 @@ const Signup = (props) => {
     if (inputPassword !== inputConfirmPassword) {
       msgErreur.push("Les mots de passe ne correspondent pas");
     };
-    if (cgvOk !== false) {
+    if (!cgvOk) {
       msgErreur.push("Les CGV n'ont pas été acceptés");
     } else
       if ((inputMail !== "") && (inputPseudo !== "") && (inputPassword !== "") && (cgvOk === true)) {
 
-        axios.post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
+        axios.post("http://localhost:4000/user/sign_up", {
           email: inputMail,
           username: inputPseudo,
           password: inputPassword
         }).then((response) => {
-          setToken(response.data.token);
+          props.setToken(response.data.token);
           Cookies.set("token", response.data.token);
           props.setToken(response.data.token);
           props.setConnected(true);
           history.push("/");
         })
           .catch((error) => {
-            alert(error);
+            alert(error.message);
           })
           ;
       }
@@ -99,8 +98,7 @@ const Signup = (props) => {
             </div>
             <div className="checkbox">
               <input className="box-checkbox" type="checkbox" value={cgvOk} onChange={(event) => {
-                console.log(event.target.value);
-                setCgvOk(event.target.value);
+                setCgvOk(event.target.checked);
               }
               } />
               <p>J'accepte les conditions de Vente et les conditions générales d'utilisation</p>

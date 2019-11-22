@@ -11,9 +11,8 @@ const Login = (props) => {
   const history = useHistory();
 
   const onSubmit = (event) => {
-    const cookie = Cookies.get("token");
     axios
-      .post("https://leboncoin-api.herokuapp.com/api/user/log_in", {
+      .post("http://localhost:4000/user/log_in", {
         email: email,
         password: password
       })
@@ -26,7 +25,6 @@ const Login = (props) => {
         props.setShowLogin(false);
       })
       .catch(err => {
-        console.log(err);
         props.setShowLogin(false);
         Cookies.remove("token");
       });

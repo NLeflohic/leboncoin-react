@@ -17,7 +17,7 @@ const Offer = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    const url = "https://leboncoin-api.herokuapp.com/api/offer/" + id;
+    const url = "http://localhost:4000/offer/" + id;
     fetchData(url);
   }, []);
 

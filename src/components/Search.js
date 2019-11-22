@@ -4,7 +4,7 @@ import Filters from "./Filters";
 
 const Search = (props) => {
   const [searchText, setSearchText] = useState("");
-  const [isFiltersDisplayed, setIsFiltersDisplayed] = useState(false);
+  const [isFiltersDisplayed, setIsFiltersDisplayed] = useState(true);
   const [filters, setFilters] = useState({ priceMin: 0, priceMax: 0, sort: 0, limit: 3, url: "" });
   let addUrl = "";
 
@@ -14,18 +14,15 @@ const Search = (props) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    console.log(filters);
     if (searchText !== "") {
       addUrl = "title=" + searchText;
     }
     if (filters.url !== "") {
       addUrl = addUrl + "&" + filters.url;
     }
-    const url = "https://leboncoin-api.herokuapp.com/api/offer/with-count?" + addUrl;
-    console.log(url);
+    const url = "http://localhost:4000/offers/?" + addUrl;
     const response = await axios.get(url);
-    console.log(response.data);
-    props.setOffers(response.data.offers);
+    props.setOffers(response.data.result);
     props.setCount(response.data.count);
     props.setLimit(filters.limit);
   }
@@ -49,7 +46,7 @@ const Search = (props) => {
           <button onClick={onFiltersClick}>Filtres</button>
         </div>
       </div >
-      {isFiltersDisplayed === true && <Filters filters={filters} setFilters={setFilters} setIsFilterDisplayed={setIsFiltersDisplayed} />}
+      {!isFiltersDisplayed && <Filters filters={filters} setFilters={setFilters} setIsFilterDisplayed={setIsFiltersDisplayed} />}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,6 +10,7 @@ import Offer from "./containers/Offer";
 import Signup from "./containers/Signup";
 import Announce from "./containers/Publish";
 import Footer from "./components/Footer";
+import Cookie from "js-cookie";
 
 
 
@@ -20,6 +21,14 @@ function App() {
   const [currentOffer, setCurrentOffer] = useState({});
   const [connected, setConnected] = useState(false);
   const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const cookie = Cookie.get("token");
+    if (cookie !== undefined) {
+      setToken(cookie);
+      setConnected(true);
+    }
+  }, []);
 
   return (
     <div className="App">
