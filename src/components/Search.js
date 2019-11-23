@@ -14,6 +14,7 @@ const Search = (props) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    props.setIsLoading(true);
     if (searchText !== "") {
       addUrl = "title=" + searchText;
     }
@@ -22,6 +23,7 @@ const Search = (props) => {
     }
     const url = "http://localhost:4000/offers/?" + addUrl;
     const response = await axios.get(url);
+    props.setIsLoading(false);
     props.setOffers(response.data.result);
     props.setCount(response.data.count);
     props.setLimit(filters.limit);

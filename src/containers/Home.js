@@ -8,11 +8,12 @@ const Home = (props) => {
   const [count, setCount] = useState();
   const [offers, setOffers] = useState([]);
   const [limit, setLimit] = useState(3);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className="home">
-      <Search setOffers={setOffers} setCount={setCount} setLimit={setLimit} />
-      <Offers offers={offers} currentOfferFunc={props.currentOfferFunc}
+      <Search setOffers={setOffers} setCount={setCount} setLimit={setLimit} setIsLoading={setIsLoading} />
+      <Offers offers={offers} currentOfferFunc={props.currentOfferFunc} setIsLoading={setIsLoading} isLoading={isLoading}
         offersFunc={setOffers} currentPage={currentPage} limit={limit} countFunc={setCount} />
       <Navigation count={count} limit={limit}
         currentPage={currentPage} currentPageFunc={setCurrentPage} />
