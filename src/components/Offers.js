@@ -15,7 +15,7 @@ const Offers = (props) => {
   }
   useEffect(() => {
     const pageToFetch = props.currentPage * props.limit;
-    const url = "http://localhost:4000/offers?skip=" + pageToFetch + "&limit=" + props.limit;
+    const url = "https://backend-leboncoin.herokuapp.com/offers?skip=" + pageToFetch + "&limit=" + props.limit;
     fetchData(url);
   }, [props.currentPage, props.limit]);
 

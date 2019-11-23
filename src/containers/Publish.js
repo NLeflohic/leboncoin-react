@@ -100,7 +100,7 @@ const Announce = (props) => {
 
     try {
       // const response = 
-      await axios.post("http://localhost:4000/offer/publish",
+      await axios.post("https://backend-leboncoin.herokuapp.com/offer/publish",
         formData,
         {
           headers: {

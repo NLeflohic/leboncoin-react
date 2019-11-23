@@ -21,7 +21,7 @@ const Search = (props) => {
     if (filters.url !== "") {
       addUrl = addUrl + "&" + filters.url;
     }
-    const url = "http://localhost:4000/offers/?" + addUrl;
+    const url = "https://backend-leboncoin.herokuapp.com/offers/?" + addUrl;
     const response = await axios.get(url);
     props.setIsLoading(false);
     props.setOffers(response.data.result);

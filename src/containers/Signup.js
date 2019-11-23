@@ -23,7 +23,7 @@ const Signup = (props) => {
     } else
       if ((inputMail !== "") && (inputPseudo !== "") && (inputPassword !== "") && (cgvOk === true)) {
 
-        axios.post("http://localhost:4000/user/sign_up", {
+        axios.post("https://backend-leboncoin.herokuapp.com/user/sign_up", {
           email: inputMail,
           username: inputPseudo,
           password: inputPassword
